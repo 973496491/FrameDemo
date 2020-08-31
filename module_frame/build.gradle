@@ -1,0 +1,50 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+def version = rootProject.ext.version
+def library = rootProject.ext.dependencies
+
+android {
+    compileSdkVersion version.compileSdkVersion
+    buildToolsVersion version.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion version.minSdkVersion
+        targetSdkVersion version.targetSdkVersion
+        versionCode version.versionCode
+        versionName version.versionName
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    api fileTree(dir: "libs", include: ["*.jar"])
+
+    api library.ktlion
+    api library.ktlionX
+    api library.appcompat
+    api library.recyclerview
+    api library.cardview
+    api library.constraintLayout
+    api library.gson
+    api library.glide
+    api library.zXingCore
+    api library.eventBus
+    api library.matisse
+    api library.calendarview
+    api library.SmartRefreshLayout
+    api library.SmartRefreshHeader
+    api library.coroutines
+    api library.coroutinesCore
+}
