@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 def version = rootProject.ext.version
 def library = rootProject.ext.dependencies
@@ -33,6 +34,8 @@ dependencies {
 
     api library.ktlion
     api library.ktlionX
+    api library.room
+    kapt library.roomKapt
     api library.appcompat
     api library.recyclerview
     api library.cardview
@@ -47,4 +50,5 @@ dependencies {
     api library.SmartRefreshHeader
     api library.coroutines
     api library.coroutinesCore
+
 }

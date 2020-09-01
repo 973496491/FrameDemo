@@ -1,8 +1,11 @@
 package com.lolko.framemodule
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.lolko.frame_module.dialog.BaseDialogBuild
+import com.lolko.frame_module.redis.CacheService
+import com.lolko.frame_module.redis.DatabaseInitialize
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -12,6 +15,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         initListener()
+        cacheTest()
     }
 
     private fun initListener() {
@@ -28,6 +32,13 @@ class MainActivity : AppCompatActivity() {
             //.setLeftClick { finish() }
             //.setRightClick { finish() }
             .show()
+    }
+
+    private fun cacheTest() {
+        DatabaseInitialize.init(this)
+
+        var user = CacheService.get(User::class.java)
+        Log.e(" TAG", user.usetName)
     }
 
 }
